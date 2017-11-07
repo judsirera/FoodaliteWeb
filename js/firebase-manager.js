@@ -27,9 +27,15 @@ function upload() {
     fbManager.storage_ref.putString(message, 'data_url').then(function (snapshot) {
         var url = snapshot.downloadURL;
         fbManager.setDatabaseRef();
-        console.log(url);
+        
+        now = new Date(Date.now());
+
         fbManager.database_ref.push({
-            "url": url
+            "url": url,
+            "day": now.getUTCDate() - 1,
+            "month": now.getUTCMonth() + 1,
+            "year": now.getUTCFullYear(),
+            "timestamp": Date.now()
         }).then(function () {
             window.location.href = "index.html";
         });
@@ -43,8 +49,8 @@ var fbManager = {
     database_ref: "",
     img_path: "images/",
 
-    setStorageRef: function (name) {
-        var path = this.img_path + user.id + '/' + name;
+    setStorageRef: function () {
+        var path = this.img_path + user.id + '/' + Date.now();
         this.storage_ref = this.storage.child(path);
     },
 
@@ -61,15 +67,16 @@ var fbManager = {
             snapshot.forEach(function (child) {
                 var ref = firebase.storage().refFromURL(child.val().url);
                 ref.getDownloadURL().then(function (url) {
-                    console.log(url);
                     var xhr = new XMLHttpRequest();
                     xhr.responseType = 'blob';
                     xhr.onload = function (event) {
-                        var blob = xhr.response;
+                        (xhr.response).then(function (item) {
+                            console.log(child.val().timestamp);
+                        });
                     };
                     xhr.open('GET', url);
                     xhr.send();
-                    console.log(xhr);
+                    setGallery(url);
                 });               
             });
         })

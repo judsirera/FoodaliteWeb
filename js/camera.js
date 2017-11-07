@@ -3,8 +3,7 @@ var camera = {
     var img = event.target.files[0];
 
     if (img.type.match('image.*')) {
-      console.log(img.name);
-      fbManager.setStorageRef(img.name);
+      fbManager.setStorageRef();
 
       // Closure to capture the file information.
       reader.onload = (function (file) {

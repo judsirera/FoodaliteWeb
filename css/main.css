@@ -11,6 +11,6 @@ section {
 }
 
 .img-gallery {
-	width: 32%;
+	width: calc(100%/3);
 	display: inline-block;
 }
