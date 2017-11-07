@@ -14,3 +14,9 @@ section {
 	width: calc(100%/3);
 	display: inline-block;
 }
+
+#noPhotos {
+	display: none;
+	margin-top: 30%;
+	color: rgb(128, 128, 128);
+}

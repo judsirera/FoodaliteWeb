@@ -64,16 +64,21 @@ var fbManager = {
         var ref = this.database.child(path);
 
         ref.once('value').then(function (snapshot) {
-            snapshot.forEach(function (child) {
-                var ref = firebase.storage().refFromURL(child.val().url);
-                ref.getDownloadURL().then(function (url) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.responseType = 'blob';
-                    xhr.open('GET', url);
-                    xhr.send();
-                    setGallery(url);
-                });               
-            });
+            if (!snapshot.val()) {
+                noPhotos();
+            } else {
+                snapshot.forEach(function (child) {
+                    var ref = firebase.storage().refFromURL(child.val().url);
+                    ref.getDownloadURL().then(function (url) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.responseType = 'blob';
+                        xhr.open('GET', url);
+                        xhr.send();
+                        setGallery(url);
+                    });
+                });
+            }
+            
         })
     },
 

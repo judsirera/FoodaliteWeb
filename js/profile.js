@@ -13,8 +13,11 @@ function setGallery(src) {
     
     gallery = document.getElementById('gallery');
     gallery.insertBefore(div, gallery.childNodes[0]);
+
+    $('.materialboxed').materialbox();
+
 }
 
 function noPhotos() {
-    
+    document.getElementById('noPhotos').style.display = "block";
 }
