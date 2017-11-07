@@ -1,0 +1,16 @@
+section {
+	margin-top: 10%;
+}
+
+.title {
+	border-bottom: 1px solid rgb(187, 187, 187);
+}
+
+#repeatImg {
+	display: none;
+}
+
+.img-gallery {
+	width: 32%;
+	display: inline-block;
+}

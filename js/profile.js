@@ -1,0 +1,3 @@
+
+
+fbManager.downloadImages(user.id);
