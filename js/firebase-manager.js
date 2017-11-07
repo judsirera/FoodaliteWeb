@@ -69,11 +69,6 @@ var fbManager = {
                 ref.getDownloadURL().then(function (url) {
                     var xhr = new XMLHttpRequest();
                     xhr.responseType = 'blob';
-                    xhr.onload = function (event) {
-                        (xhr.response).then(function (item) {
-                            console.log(child.val().timestamp);
-                        });
-                    };
                     xhr.open('GET', url);
                     xhr.send();
                     setGallery(url);
