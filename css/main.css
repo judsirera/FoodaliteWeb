@@ -10,9 +10,16 @@ section {
 	display: none;
 }
 
+#gallery {
+	margin-top:5%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
 .img-gallery {
 	width: calc(100%/3);
 	display: inline-block;
+	padding: 2px;
 }
 
 #noPhotos {
