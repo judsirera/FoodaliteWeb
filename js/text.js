@@ -1,4 +1,5 @@
 var items = 1
+var max_items = 1;
 
 var text = {
     template: "",
@@ -9,10 +10,14 @@ var text = {
         line.className = line.className + " disabled";
 
         items = items + 1;
+        max_items = max_items + 1;
+
         newLine = template.cloneNode(true);
         newLine.id = "item_" + items;
+        (newLine.childNodes[1].childNodes[1]).id = "dish_" + items;
         (newLine.childNodes[3].childNodes[1]).id = "add-line_" + items;
         (newLine.childNodes[5].childNodes[1]).id = "delete-line_" + items;
+
 
         parent.insertBefore(newLine, parent.childNodes[items]);
 
@@ -35,7 +40,29 @@ var text = {
     },
 
     uploadInfo: function () {
-        console.log("upload");
+        dishes = "";
+        for (var index = 1; index <= max_items; index++) {
+            input = document.getElementById('dish_' + index);
+            if (input) {
+                console.log(input.value);
+                dishes = dishes + input.value + "$$$";
+            }
+        }
+        
+        if (dishes) {
+            fbManager.setDatabaseRef(fbManager.text_path);
+            now = new Date(Date.now());
+
+            fbManager.database_ref.push({
+                "dishes": dishes,
+                "day": now.getUTCDate() - 1,
+                "month": now.getUTCMonth() + 1,
+                "year": now.getUTCFullYear(),
+                "timestamp": Date.now()
+            }).then(function () {
+                window.location.href = "index.html";
+            });
+        }
     },
 
     init: function () {

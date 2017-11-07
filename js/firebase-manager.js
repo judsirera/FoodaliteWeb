@@ -26,7 +26,7 @@ function upload() {
     var message = reader.result;
     fbManager.storage_ref.putString(message, 'data_url').then(function (snapshot) {
         var url = snapshot.downloadURL;
-        fbManager.setDatabaseRef();
+        fbManager.setDatabaseRef(fbManager.img_path);
         
         now = new Date(Date.now());
 
@@ -48,19 +48,20 @@ var fbManager = {
     storage_ref: "",
     database_ref: "",
     img_path: "images/",
+    text_path: "text/",
 
     setStorageRef: function () {
         var path = this.img_path + user.id + '/' + Date.now();
         this.storage_ref = this.storage.child(path);
     },
 
-    setDatabaseRef: function () {
-        var path = user.id + '/';
+    setDatabaseRef: function (subpath) {
+        var path = user.id + '/' + subpath;
         this.database_ref = this.database.child(path);
     },
 
     downloadImages: function (userId) {
-        var path = userId + '/';
+        var path = userId + '/' + this.img_path;
         var ref = this.database.child(path);
 
         ref.once('value').then(function (snapshot) {
