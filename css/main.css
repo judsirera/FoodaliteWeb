@@ -1,5 +1,5 @@
 section {
-	margin-top: 10%;
+	margin-top: 1%;
 }
 
 .title {
@@ -10,14 +10,8 @@ section {
 	display: none;
 }
 
-#gallery {
-	margin-top:5%;
-	margin-left: 2%;
-	margin-right: 2%;
-}
 
 .img-gallery {
-	padding: 5px;
 	float:left;
 
 }
@@ -61,11 +55,7 @@ section {
 }
 .centered-and-cropped {   object-fit: cover; /* Do not scale the image */
   object-position: center; /* Center the image within the element */
-  height: 30vw;
-  width: 30vw; }
-  @media only screen and (max-width: 500px) {
-    .centered-and-cropped {   object-fit: cover; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
-  height: 40vw;
-  width: 40vw; }
-}
+  height: 33vw;
+  width: 33vw;
+padding: 0.5vw;}
+
