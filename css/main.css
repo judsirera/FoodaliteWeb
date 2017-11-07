@@ -20,3 +20,35 @@ section {
 	margin-top: 30%;
 	color: rgb(128, 128, 128);
 }
+
+.center-title {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.center-title img {
+	width: 40%;
+	margin-left: 30%;
+}
+
+.center-title h3 {
+	color: rgb(128, 128, 128);
+	font-weight: 200;
+}
+
+.noBorder:focus {
+	border-bottom: 1px solid #9e9e9e !important;
+	box-shadow: none !important;
+}
+
+.btn-margin {
+	margin-top: 15%;
+}
+
+.no-margin-top {
+	margin-top: 0px;
+}
+
+.no-margin-bottom {
+	margin-bottom: 0px;
+}

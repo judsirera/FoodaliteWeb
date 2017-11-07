@@ -15,7 +15,6 @@ function setGallery(src) {
     gallery.insertBefore(div, gallery.childNodes[0]);
 
     $('.materialboxed').materialbox();
-
 }
 
 function noPhotos() {
