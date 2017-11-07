@@ -17,9 +17,9 @@ section {
 }
 
 .img-gallery {
-	width: calc(100%/3);
-	display: inline-block;
-	padding: 2px;
+	padding: 5px;
+	float:left;
+
 }
 
 #noPhotos {
@@ -58,4 +58,14 @@ section {
 
 .no-margin-bottom {
 	margin-bottom: 0px;
+}
+.centered-and-cropped {   object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 30vw;
+  width: 30vw; }
+  @media only screen and (max-width: 500px) {
+    .centered-and-cropped {   object-fit: cover; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 40vw;
+  width: 40vw; }
 }
