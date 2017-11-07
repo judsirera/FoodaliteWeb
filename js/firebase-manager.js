@@ -7,6 +7,7 @@ var user = {
         } else {
             this.id = Cookies.get("FOODALITE_USER_ID");
         }
+        console.log("Foodalite UserID",Cookies.get("FOODALITE_USER_ID"));
     }
 }
 
