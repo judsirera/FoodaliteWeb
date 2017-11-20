@@ -36,14 +36,14 @@ function rgbToHex(r, g, b) {
 
 function renderPalette(palette) {
     var img = document.getElementById('generated-img');
-    var rectWidth = img.width;
+    var rectWidth = img.width / palette.length;
     var rectHeight = img.height;
 
-    console.log(rectWidth)
-    console.log(rectHeight)
-
     var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
     var ctx = canvas.getContext('2d');
+    
     for (let i = 0; i < palette.length; i++) {
         var color = rgbToHex(palette[i][0], palette[i][1], palette[i][2]);
         console.log(color)

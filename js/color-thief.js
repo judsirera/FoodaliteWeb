@@ -106,7 +106,7 @@ ColorThief.prototype.getPalette = function (imageData, colorCount, quality) {
   }
 
   var pixels = imageData.data;
-  var pixelCount = imageData.width * imageData.height;
+  var pixelCount = data.data.length;
 
   // Store the RGB values in an array format suitable for quantize function
   var pixelArray = [];

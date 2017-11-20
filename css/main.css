@@ -67,9 +67,8 @@ section {
 	/* Do not scale the image */
 	object-position: center;
 	/* Center the image within the element */
-	height: 33vw;
-	width: 33vw;
-	padding: 0.5vw;
+	height: 75vw;
+	width: 75vw;
 }
 
 .margin-top-5{
