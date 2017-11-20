@@ -3,10 +3,11 @@ var user = {
     init: function () {
         if (!Cookies.get("FOODALITE_USER_ID")) {
             this.id = parseInt(Math.random() * 100000)
-            Cookies.set("FOODALITE_USER_ID", this.id);
+            Cookies.set("FOODALITE_USER_ID", this.id,{expires:700000});
         } else {
             this.id = Cookies.get("FOODALITE_USER_ID");
         }
+        console.log("Foodalite UserID",Cookies.get("FOODALITE_USER_ID"));
     }
 }
 
@@ -27,7 +28,7 @@ function upload() {
     fbManager.storage_ref.putString(message, 'data_url').then(function (snapshot) {
         var url = snapshot.downloadURL;
         fbManager.setDatabaseRef(fbManager.img_path);
-        
+
         now = new Date(Date.now());
 
         fbManager.database_ref.push({
@@ -79,7 +80,7 @@ var fbManager = {
                     });
                 });
             }
-            
+
         })
     },
 
