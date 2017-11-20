@@ -37,7 +37,7 @@ function upload() {
             "year": now.getUTCFullYear(),
             "timestamp": Date.now()
         }).then(function () {
-            window.location.href = "index.html";
+            window.location.href = "uploaded.html";
         });
     });
 }
