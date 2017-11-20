@@ -62,6 +62,16 @@ section {
 	padding: 0.5vw;
 }
 
+.centered-and-cropped-uploaded {
+	object-fit: cover;
+	/* Do not scale the image */
+	object-position: center;
+	/* Center the image within the element */
+	height: 33vw;
+	width: 33vw;
+	padding: 0.5vw;
+}
+
 .margin-top-5{
 	margin-top: 3%;
 }

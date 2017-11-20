@@ -1,11 +1,22 @@
+var imgURL = user.getLastURL();
+console.log("img: " + imgURL);
 
+if (imgURL != null) {
+    setImageUploaded(imgURL);
 
-fbManager.downloadImages(user.id);
+    var colorThief = new ColorThief()
 
-function setPicture(src) {
-
+    console.log(colorThief.getColorFromUrl(imgURL))
+    // img = document.getElementById("uploaded-img");
+    // img.addEventListener('load', function () {
+    //     var colorThief = new ColorThief()
+    //     var palette = colorThief.getPalette(img, 8);
+    //     console.log(palette);
+    // })
 }
 
-function noPhotos() {
-
+function setImageUploaded(url) {
+    var img = document.getElementById("uploaded-img");
+    img.src = url;
+    $('.materialboxed').materialbox();
 }

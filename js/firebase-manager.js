@@ -3,11 +3,22 @@ var user = {
     init: function () {
         if (!Cookies.get("FOODALITE_USER_ID")) {
             this.id = parseInt(Math.random() * 100000)
-            Cookies.set("FOODALITE_USER_ID", this.id,{expires:700000});
+            Cookies.set("FOODALITE_USER_ID", this.id, {
+                expires: 700000
+            });
         } else {
             this.id = Cookies.get("FOODALITE_USER_ID");
         }
-        console.log("Foodalite UserID",Cookies.get("FOODALITE_USER_ID"));
+        console.log("Foodalite UserID", Cookies.get("FOODALITE_USER_ID"));
+    },
+    setRecentURL: function (url) {
+        Cookies.set("LAST_URL", url, {
+            expires: 3600*24
+        });
+        console.log("Foodalite LastURL", Cookies.get("LAST_URL"));
+    },
+    getLastURL: function name() {
+        return Cookies.get("LAST_URL");
     }
 }
 
@@ -38,6 +49,7 @@ function upload() {
             "year": now.getUTCFullYear(),
             "timestamp": Date.now()
         }).then(function () {
+            user.setRecentURL(url);
             window.location.href = "uploaded.html";
         });
     });
@@ -76,6 +88,7 @@ var fbManager = {
                         xhr.responseType = 'blob';
                         xhr.open('GET', url);
                         xhr.send();
+
                         setGallery(url);
                     });
                 });
