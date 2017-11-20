@@ -96,7 +96,7 @@ ColorThief.prototype.getColor = function (sourceImage, quality) {
  *
  *
  */
-ColorThief.prototype.getPalette = function (sourceImage, colorCount, quality) {
+ColorThief.prototype.getPalette = function (imageData, colorCount, quality) {
 
   if (typeof colorCount === 'undefined' || colorCount < 2 || colorCount > 256) {
     colorCount = 10;
@@ -105,11 +105,8 @@ ColorThief.prototype.getPalette = function (sourceImage, colorCount, quality) {
     quality = 10;
   }
 
-  // Create custom CanvasImage object
-  var image = new CanvasImage(sourceImage);
-  var imageData = image.getImageData();
   var pixels = imageData.data;
-  var pixelCount = image.getPixelCount();
+  var pixelCount = imageData.width * imageData.height;
 
   // Store the RGB values in an array format suitable for quantize function
   var pixelArray = [];
@@ -131,9 +128,6 @@ ColorThief.prototype.getPalette = function (sourceImage, colorCount, quality) {
   // using median cut algorithm
   var cmap = MMCQ.quantize(pixelArray, colorCount);
   var palette = cmap ? cmap.palette() : null;
-
-  // Clean up
-  image.removeCanvas();
 
   return palette;
 };

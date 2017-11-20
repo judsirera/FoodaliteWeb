@@ -12,13 +12,14 @@ var user = {
         console.log("Foodalite UserID", Cookies.get("FOODALITE_USER_ID"));
     },
     setRecentURL: function (url) {
-        Cookies.set("LAST_URL", url, {
-            expires: 3600*24
-        });
-        console.log("Foodalite LastURL", Cookies.get("LAST_URL"));
+        if (typeof(Storage) !== 'undefined') {
+            localStorage.setItem("LAST_URL", url)
+        }
     },
     getLastURL: function name() {
-        return Cookies.get("LAST_URL");
+        if (typeof (Storage) !== 'undefined') {
+            return localStorage.getItem("LAST_URL")
+        }
     }
 }
 
@@ -36,8 +37,10 @@ var config = {
 
 function upload() {
     var message = reader.result;
+
     fbManager.storage_ref.putString(message, 'data_url').then(function (snapshot) {
-        var url = snapshot.downloadURL;
+        var url = snapshot.downloadURL; 
+    
         fbManager.setDatabaseRef(fbManager.img_path);
 
         now = new Date(Date.now());
@@ -49,7 +52,7 @@ function upload() {
             "year": now.getUTCFullYear(),
             "timestamp": Date.now()
         }).then(function () {
-            user.setRecentURL(url);
+            user.setRecentURL(message);
             window.location.href = "uploaded.html";
         });
     });
